@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Q&A Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="glass-container">
+            <div class="header">
+                <h1>✨ AI Assistant</h1>
+                <p>Powered by Google Gemini</p>
+            </div>
+            
+            <form method="POST" class="input-group">
+                <input type="text" name="question" placeholder="Ask me anything..." required autocomplete="off">
+                <button type="submit">
+                    Ask <span class="arrow">→</span>
+                </button>
+            </form>
+
+            {% if answer %}
+            <div class="result-section">
+                <div class="debug-card">
+                    <div class="debug-title">🛠️ NLP Processing Data</div>
+                    <div class="debug-content">
+                        <p><strong>Original:</strong> {{ question }}</p>
+                        <p><strong>Tokens:</strong> <code class="token-list">{{ tokens }}</code></p>
+                    </div>
+                </div>
+
+                <div class="answer-card">
+                    <h3>🤖 Gemini's Answer:</h3>
+                    <p>{{ answer }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
