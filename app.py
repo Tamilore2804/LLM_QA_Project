@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # --- SETUP ---
-API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyDgkS29rhsJQ2i0Dmcl9xMdW713G0Sdgpg")
+API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyCD3XlE7gVo8FCDIZia5S5-duVoI0v75-4")
 genai.configure(api_key=API_KEY)
 
 def preprocess_input(user_text):
@@ -27,7 +27,7 @@ def home():
             
             # API Call
             try:
-                model = genai.GenerativeModel('gemini-2.5-flash')
+                model = genai.GenerativeModel('gemini-2.5-flash-lite')
                 response = model.generate_content(processed)
                 answer = response.text
             except Exception as e:
